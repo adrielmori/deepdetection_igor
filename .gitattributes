@@ -1,0 +1,2 @@
+model/xception_deepfake_image.h5 filter=lfs diff=lfs merge=lfs -text
+model/xception_deepfake_image.keras filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,36 @@
+<div class="card container mt-5">
+  <div class="card-title mt-3">
+    <h1 class="title">Envie seu vídeo/imagem para verificar se é real ou fake</h1>
+  </div>
+
+  <div class="card-body">
+    <form>
+      <div class="mb-3">
+        <label for="tipoArquivo" class="form-label">Tipo de arquivo</label>
+        <select class="form-select" id="tipoArquivo" name="tipoArquivo" [(ngModel)]="upload.description">
+          <option *ngFor="let tipos of Object.values(UploadTipoArquivo)" [value]="tipos">
+            {{tipos}}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3" *ngIf="upload.description === UploadTipoArquivo.image">
+        <label for="imagem" class="form-label">Selecione uma imagem</label>
+        <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*"
+               (change)="mudouArquivo($event)">
+      </div>
+
+      <div class="mb-3" *ngIf="upload.description === UploadTipoArquivo.video">
+        <label for="video" class="form-label">Selecione um vídeo</label>
+        <input type="file" class="form-control" id="video" name="video" accept="video/*"
+               (change)="mudouArquivo($event)">
+      </div>
+      <div class="d-flex">
+        <button class="btn btn-primary mb-3 ms-auto" type="submit"
+                [ngClass]="{'disabled': !upload.file_path}"
+                (click)="enviar()">
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
